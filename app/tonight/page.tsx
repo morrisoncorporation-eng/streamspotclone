@@ -40,22 +40,22 @@ export default function TonightsLineup() {
         .order('start_time');
 
       if (!error && data) {
-        const mapped = data.map((e: any) => ({
-          id: e.id,
-          title: e.title,
-          venue: e.venue_name,
-          start_time: e.start_time,
-          category: e.category,
-          status: new Date(e.start_time) <= new Date() ? 'live' : 'upcoming',
-          attendees: e.attendees || 0,
-          rsvped: false,
-          avatars: [
-            'https://i.pravatar.cc/32?img=1',
-            'https://i.pravatar.cc/32?img=2',
-            'https://i.pravatar.cc/32?img=3'
-          ]
-        }));
-        setEvents(mapped);
+      const mapped: Event[] = data.map((e: any) => ({
+        id: e.id,
+        title: e.title,
+        venue: e.venue_name,
+        start_time: e.start_time,
+        category: e.category,
+        status: new Date(e.start_time) <= new Date() ? 'live' : 'upcoming',
+        attendees: e.attendees || 0,
+        rsvped: false,
+        avatars: [
+          'https://i.pravatar.cc/32?img=1',
+          'https://i.pravatar.cc/32?img=2',
+          'https://i.pravatar.cc/32?img=3'
+        ]
+      }));
+      setEvents(mapped);
       }
     };
 
